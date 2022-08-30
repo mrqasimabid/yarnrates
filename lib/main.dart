@@ -125,10 +125,14 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
         actions: [
           MaterialButton(
-              onPressed: () {
-                reload();
-              },
-              child: const Icon(Icons.refresh))
+            onPressed: () {
+              reload();
+            },
+            child: const Icon(
+              Icons.refresh,
+              // color: Colors.white,
+            ),
+          )
         ],
       ),
       body: SafeArea(
@@ -206,6 +210,7 @@ class _MyHomePageState extends State<MyHomePage> {
               a: admin,
               r: reload,
               t: table,
-            ));
+            ),
+          );
   }
 }

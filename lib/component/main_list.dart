@@ -18,6 +18,7 @@ class MainPageList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return ListView(
       scrollDirection: Axis.vertical,
       shrinkWrap: true,

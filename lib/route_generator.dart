@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yarnrates/main.dart';
 import 'package:yarnrates/pages/addnew.dart';
 import 'package:yarnrates/pages/analysispage.dart';
+import 'package:yarnrates/pages/landing/landing_page.dart';
 import 'package:yarnrates/pages/pricehistory.dart';
 import 'package:yarnrates/pages/settings.dart';
 
@@ -9,6 +10,7 @@ import 'Model/globals.dart';
 import 'pages/addmill.dart';
 import 'pages/login_page.dart';
 import 'pages/parameterhistory.dart';
+import 'pages/product_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -48,12 +50,17 @@ class RouteGenerator {
       case '/logout':
         {
           logout();
-          return MaterialPageRoute(
-              builder: (_) => const MyHomePage(title: 'Yarn Rates'));
+          // return MaterialPageRoute(
+          //     builder: (_) => const MyHomePage(title: 'Yarn Rates'));
+          return MaterialPageRoute(builder: (_) => LandingPage());
         }
       case '/addmill':
         {
           return MaterialPageRoute(builder: (_) => AddMillPage());
+        }
+      case '/landing':
+        {
+          return MaterialPageRoute(builder: (_) => LandingPage());
         }
 
       default:

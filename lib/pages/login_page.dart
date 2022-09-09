@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yarnrates/Model/globals.dart';
 import '../main.dart';
 import '../requests.dart';
+import 'product_page.dart';
 
 const users = {
   'dribbble@gmail.com': '12345',
@@ -76,14 +77,16 @@ class LoginScreen extends StatelessWidget {
               ),
             )),
       ],
+      logo: 'assets/YARNMARKETLOGO.png',
       footer: "National Textile University",
       hideForgotPasswordButton: true,
-      title: 'Yarn Rates',
+      title: 'Yarn Market',
       onLogin: _authUser,
       onSubmitAnimationCompleted: () {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => const MyHomePage(title: 'Yarn Rates'),
-        ));
+        Navigator.of(context).pushReplacementNamed('/landing');
+        // Navigator.of(context).pushReplacement(MaterialPageRoute(
+        //   builder: (context) => const MyHomePage(title: 'Yarn Rates'),
+        // ));
       },
       onRecoverPassword: _recoverPassword,
     );

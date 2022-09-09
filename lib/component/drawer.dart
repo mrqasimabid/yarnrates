@@ -37,7 +37,7 @@ class _DrawerCState extends State<DrawerC> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image.asset(
-              'assets/icon.png',
+              'assets/YARNMARKETLOGO.png',
               height: MediaQuery.of(context).size.height / 4,
             ),
           ),
@@ -75,6 +75,7 @@ getLoginTile(context) async {
     ];
   } else {
     data = [
+      {'title': 'Products', 'route': '/homepage', 'icon': Icons.pages},
       {'title': 'Analysis', 'route': '/analysis', 'icon': Icons.analytics},
     ];
   }

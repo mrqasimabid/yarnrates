@@ -71,7 +71,7 @@ getLoginTile(context) async {
     data = [
       {'title': 'Analysis', 'route': '/analysis', 'icon': Icons.analytics},
       {'title': 'Add New', 'route': '/addnew', 'icon': Icons.new_label},
-      {'title': 'Add Mill', 'route': '/addmill', 'icon': Icons.factory},
+      // {'title': 'Add Mill', 'route': '/addmill', 'icon': Icons.factory},
     ];
   } else {
     data = [

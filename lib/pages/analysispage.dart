@@ -29,10 +29,10 @@ class _AnalysisPageState extends State<AnalysisPage> {
     var query = "select * from filters;";
     queryDB(query).then((value) {
       filter = process(jsonDecode(value));
-      query = "select suitable_name as name from suitable";
-      queryDB(query).then((value2) {
-        filter['suitableFor'] = processSuitable(jsonDecode(value2));
-      }).whenComplete(() {});
+      // query = "select suitable_name as name from suitable";
+      // queryDB(query).then((value2) {
+      // filter['suitableFor'] = processSuitable(jsonDecode(value2));
+      // }).whenComplete(() {});
     }).whenComplete(() {});
     yarnRows().then((value) {
       table = value['table'];
@@ -47,8 +47,9 @@ class _AnalysisPageState extends State<AnalysisPage> {
 
   bool disableBtn = true;
   validate() {
-    if ((rangeController.text.isNotEmpty &&
-        qualityController.text.isNotEmpty)) {
+    if (rangeController.text.isNotEmpty && true
+        // qualityController.text.isNotEmpty
+        ) {
       disableBtn = false;
     } else {
       disableBtn = !false;
@@ -64,18 +65,18 @@ class _AnalysisPageState extends State<AnalysisPage> {
     return [for (var i = start; i <= end; i++) i.toString()];
   }
 
-  qualityFilter(quality) {
-    return table.where((element) => element.yarnFullQaulity.contains(quality));
-  }
+  // qualityFilter(quality) {
+  //   return table.where((element) => element.yarnFullQaulity.contains(quality));
+  // }
 
-  suitableForFilter(suitable, table4) {
-    List<YarnRow> table1 = table4;
-    return table1
-        .where((element) => element.suitableFor
-            .toLowerCase()
-            .contains(suitable.toString().toLowerCase()))
-        .toList();
-  }
+  // suitableForFilter(suitable, table4) {
+  //   List<YarnRow> table1 = table4;
+  //   return table1
+  //       .where((element) => element.suitableFor
+  //           .toLowerCase()
+  //           .contains(suitable.toString().toLowerCase()))
+  //       .toList();
+  // }
 
   rangeFilter(range, table2) {
     List<YarnRow> table3 = [];
@@ -94,14 +95,17 @@ class _AnalysisPageState extends State<AnalysisPage> {
   filterData() async {
     dataLoader = true;
     setState(() {});
-    String quality = qualityController.text;
-    String suitable = suitableController.text;
+    // String quality = qualityController.text;
+    // String suitable = suitableController.text;
+    // var qualityData = qualityFilter(quality);
+
     List range = getRange();
-    var qualityData = qualityFilter(quality);
-    var table3 = rangeFilter(range, qualityData);
-    if (suitable.isNotEmpty) {
-      table3 = suitableForFilter(suitable, table3);
-    }
+    // var table3 = rangeFilter(range, qualityData);
+    var table3 = rangeFilter(range, table);
+
+    // if (suitable.isNotEmpty) {
+    // table3 = suitableForFilter(suitable, table3);
+    // }
 
     if (table3.isNotEmpty) {
       var ids = [];
@@ -152,8 +156,8 @@ class _AnalysisPageState extends State<AnalysisPage> {
   }
 
   var rangeController = TextEditingController();
-  var qualityController = TextEditingController();
-  var suitableController = TextEditingController();
+  // var qualityController = TextEditingController();
+  // var suitableController = TextEditingController();
   var dateController = TextEditingController();
   var pageKey = GlobalKey<ScaffoldState>();
 
@@ -214,65 +218,65 @@ class _AnalysisPageState extends State<AnalysisPage> {
                       ),
                     ),
                   ),
-                  ListTile(
-                    trailing: TextButton(
-                      child: const Icon(Icons.cancel),
-                      onPressed: () {
-                        qualityController.text = "";
-                        setState(() {});
-                      },
-                    ),
-                    title: TextField(
-                      readOnly: true,
-                      onTap: () async {
-                        dynamic d = await selectDropdown(
-                            displayValue: '',
-                            context: context,
-                            data: jsonDecode(filter['quality_name']),
-                            setState: setState,
-                            hint: "Select Quality");
-                        if (d != null) qualityController.text = d.toString();
+                  // ListTile(
+                  //   trailing: TextButton(
+                  //     child: const Icon(Icons.cancel),
+                  //     onPressed: () {
+                  //       qualityController.text = "";
+                  //       setState(() {});
+                  //     },
+                  //   ),
+                  //   title: TextField(
+                  //     readOnly: true,
+                  //     onTap: () async {
+                  //       dynamic d = await selectDropdown(
+                  //           displayValue: '',
+                  //           context: context,
+                  //           data: jsonDecode(filter['quality_name']),
+                  //           setState: setState,
+                  //           hint: "Select Quality");
+                  //       if (d != null) qualityController.text = d.toString();
 
-                        setState(
-                          () {},
-                        );
-                      },
-                      controller: qualityController,
-                      decoration: const InputDecoration(
-                        label: Text("Quality"),
-                      ),
-                    ),
-                  ),
-                  ListTile(
-                    trailing: TextButton(
-                      child: const Icon(Icons.cancel),
-                      onPressed: () {
-                        suitableController.text = "";
-                        setState(() {});
-                      },
-                    ),
-                    title: TextField(
-                      readOnly: true,
-                      onTap: () async {
-                        print(filter['suitableFor']);
-                        dynamic d = await selectDropdown(
-                            displayValue: '',
-                            context: context,
-                            data: filter['suitableFor'],
-                            setState: setState,
-                            hint: "Select Suitable");
-                        if (d != null) suitableController.text = d.toString();
+                  //       setState(
+                  //         () {},
+                  //       );
+                  //     },
+                  //     controller: qualityController,
+                  //     decoration: const InputDecoration(
+                  //       label: Text("Quality"),
+                  //     ),
+                  //   ),
+                  // ),
+                  // ListTile(
+                  //   trailing: TextButton(
+                  //     child: const Icon(Icons.cancel),
+                  //     onPressed: () {
+                  //       suitableController.text = "";
+                  //       setState(() {});
+                  //     },
+                  //   ),
+                  //   title: TextField(
+                  //     readOnly: true,
+                  //     onTap: () async {
+                  //       print(filter['suitableFor']);
+                  //       dynamic d = await selectDropdown(
+                  //           displayValue: '',
+                  //           context: context,
+                  //           data: filter['suitableFor'],
+                  //           setState: setState,
+                  //           hint: "Select Suitable");
+                  //       if (d != null) suitableController.text = d.toString();
 
-                        setState(
-                          () {},
-                        );
-                      },
-                      controller: suitableController,
-                      decoration: const InputDecoration(
-                        label: Text("Suitable For"),
-                      ),
-                    ),
-                  ),
+                  //       setState(
+                  //         () {},
+                  //       );
+                  //     },
+                  //     controller: suitableController,
+                  //     decoration: const InputDecoration(
+                  //       label: Text("Suitable For"),
+                  //     ),
+                  //   ),
+                  // ),
                   ListTile(
                     trailing: TextButton(
                       child: const Icon(Icons.cancel),

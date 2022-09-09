@@ -33,6 +33,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: const Text('Product Details'),
           bottom: const TabBar(

@@ -18,7 +18,7 @@ List<YarnRow> table = [];
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  globalUser = await loadData();
   if (globalUser == null) {
     await logout();
   }

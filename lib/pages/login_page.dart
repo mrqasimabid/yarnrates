@@ -21,10 +21,10 @@ class LoginScreen extends StatelessWidget {
       res = await loginAPI(data.name, data.password);
       if (res['status'] == "true") {
         globalUser = jsonDecode(res['data'])[0];
+        print(globalUser);
         var prefs = await SharedPreferences.getInstance();
         await prefs.setBool('login', true);
         await prefs.setString('user', jsonEncode(globalUser));
-        print(globalUser);
         return null;
       } else {
         return res['message'];

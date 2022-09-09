@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -22,9 +24,9 @@ var cols = {
     'yarn_full_qaulity': 'Yarn Quality',
   },
   'all': {
-    'quality_name': 'Quality',
+    // 'quality_name': 'Quality',
     'mill_name': 'Spinning Mill',
-    'suitable_for': 'Suitable For',
+    // 'suitable_for': 'Suitable For',
     'nature_name': 'Nature',
     'brand_name': 'Brand Name',
     'yarn_full_qaulity': 'Yarn Quality',
@@ -313,6 +315,16 @@ logout() async {
   globalUser = null;
   await prefs.remove('user');
   return prefs.setBool('login', false);
+}
+
+loadData() async {
+  var prefs = await SharedPreferences.getInstance();
+  if (prefs.containsKey('user')) {
+    var data = jsonDecode(prefs.getString('user')!);
+    return data;
+  } else {
+    return null;
+  }
 }
 
 TextStyle whiteText = TextStyle(color: Colors.white);

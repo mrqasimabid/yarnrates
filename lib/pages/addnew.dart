@@ -42,20 +42,20 @@ List fields = [
     'data': 'quality',
     'field': 'quality_name'
   },
-  {
-    'title': 'Quality Name',
-    'controller': TextEditingController(),
-    'save': 'quality_name',
-    'data': 'qualityname',
-    'field': 'qualityname_name'
-  },
-  {
-    'title': 'Suitable For',
-    'controller': TextEditingController(),
-    'data': 'suitable',
-    'field': 'suitable_name',
-    'save': 'suitable_for',
-  },
+  // {
+  //   'title': 'Quality Name',
+  //   'controller': TextEditingController(),
+  //   'save': 'quality_name',
+  //   'data': 'qualityname',
+  //   'field': 'qualityname_name'
+  // },
+  // {
+  //   'title': 'Suitable For',
+  //   'controller': TextEditingController(),
+  //   'data': 'suitable',
+  //   'field': 'suitable_name',
+  //   'save': 'suitable_for',
+  // },
 ];
 
 class _AddNewState extends State<AddNew> {
@@ -66,8 +66,8 @@ class _AddNewState extends State<AddNew> {
     data['brand'] = await queryDB("SELECT * FROM brand");
     data['nature'] = await queryDB("SELECT * FROM nature");
     data['quality'] = await queryDB("SELECT * FROM quality");
-    data['qualityname'] = await queryDB("SELECT * FROM qualityname");
-    data['suitable'] = await queryDB("SELECT * FROM suitable");
+    // data['qualityname'] = await queryDB("SELECT * FROM qualityname");
+    // data['suitable'] = await queryDB("SELECT * FROM suitable");
     return data;
   }
 
@@ -102,7 +102,8 @@ class _AddNewState extends State<AddNew> {
   save() async {
     var f = {};
     var query =
-        "INSERT INTO `product` (`mill_name`, `brand_name`, `nature_name`, `yarn_full_qaulity`,`quality_name`, `suitable_for`) VALUES ";
+        "INSERT INTO `product` (`mill_name`, `brand_name`, `nature_name`, `yarn_full_qaulity`) VALUES ";
+    // "INSERT INTO `product` (`mill_name`, `brand_name`, `nature_name`, `yarn_full_qaulity`,`quality_name`, `suitable_for`) VALUES ";
     var vals = "(";
     int index = 0;
     for (var element in fields) {

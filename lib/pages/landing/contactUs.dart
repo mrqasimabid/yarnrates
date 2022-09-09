@@ -30,52 +30,67 @@ class _ContactUsState extends State<ContactUs> {
       ),
       height: width < 1100 ? height * 2 : height,
       width: width,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40),
-        child: ListView(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                contactCard(
-                  Icons.location_on,
-                  'OUR LOCATION',
-                  'National Textile University, Sheikhupura Road, '
-                      'Faisalabad 37610, Pakistan',
-                ),
-                Row(
-                  children: [
-                    contactCard(
-                      Icons.email,
-                      'EMAIL US',
-                      'info@ntu.edu.pk',
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40),
+          child: ListView(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Center(
+                    child: Text(
+                      'Contact Us',
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                      ),
                     ),
-                    contactCard(
-                      Icons.call,
-                      'CALL US',
-                      '92 (041) 9230081-90',
-                    ),
-                    contactCard(
-                      Icons.fax,
-                      'FAX',
-                      '92 (041) 9230098',
-                    ),
-                  ],
-                ),
-                contactCard(
-                  Icons.timer,
-                  'OFFICE HOURS',
-                  'Monday - Friday 8:30 am to 4:40 pm and '
-                      'Saturday & Sunday - Closed',
-                ),
-              ],
-            ),
-            Row(
-              children: [],
-            ),
-          ],
+                  ),
+                  SizedBox(
+                    height: height / 12,
+                  ),
+                  contactCard(
+                    Icons.location_on,
+                    'OUR LOCATION',
+                    'National Textile University, Sheikhupura Road, '
+                        'Faisalabad 37610, Pakistan',
+                  ),
+                  Row(
+                    children: [
+                      contactCard(
+                        Icons.email,
+                        'EMAIL US',
+                        'info@ntu.edu.pk',
+                      ),
+                      contactCard(
+                        Icons.call,
+                        'CALL US',
+                        '92 (041) 9230081-90',
+                      ),
+                      contactCard(
+                        Icons.fax,
+                        'FAX',
+                        '92 (041) 9230098',
+                      ),
+                    ],
+                  ),
+                  contactCard(
+                    Icons.timer,
+                    'OFFICE HOURS',
+                    'Monday - Friday 8:30 am to 4:40 pm and '
+                        'Saturday & Sunday - Closed',
+                  ),
+                ],
+              ),
+              Row(
+                children: [],
+              ),
+            ],
+          ),
         ),
       ),
     );

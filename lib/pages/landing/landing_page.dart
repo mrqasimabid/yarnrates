@@ -29,6 +29,7 @@ class _LandingPageState extends State<LandingPage> {
       child: Scaffold(
         drawer: DrawerC(),
         appBar: AppBar(
+          centerTitle: true,
           backgroundColor: Colors.transparent,
           // leadingWidth: ,
           // leading: Image.asset(
@@ -37,7 +38,7 @@ class _LandingPageState extends State<LandingPage> {
           // ),
           // title: Image.asset(
           //   'assets/YARNMARKETLOGO.png',
-          //   scale: 15,
+          //   scale: 13,
           // ),
           actions: actionButtons(context),
         ),
@@ -46,7 +47,6 @@ class _LandingPageState extends State<LandingPage> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              
               const MainSection(),
               const AboutUs(),
               DeliverSection(),
@@ -66,21 +66,30 @@ actionButtons(context) {
           Navigator.of(context).pushNamed('/homepage');
         },
         child: Wrap(
-          children: [
+          children: const [
             Icon(Icons.pages),
-            Text("Products"),
+            SizedBox(width: 5),
+            Text(
+              "Products",
+              style: TextStyle(fontSize: 18),
+            ),
           ],
         )),
     MaterialButton(
-        onPressed: () {
-          Navigator.of(context).pushNamed('/analysis');
-        },
-        child: Wrap(
-          children: [
-            Icon(Icons.analytics),
-            Text("Analysis"),
-          ],
-        )),
+      onPressed: () {
+        Navigator.of(context).pushNamed('/analysis');
+      },
+      child: Wrap(
+        children: const [
+          Icon(Icons.analytics),
+          SizedBox(width: 5),
+          Text(
+            "Analysis",
+            style: TextStyle(fontSize: 18),
+          ),
+        ],
+      ),
+    ),
   ];
   if (globalUser != null) {
     // actions.add(
@@ -103,7 +112,11 @@ actionButtons(context) {
           child: Wrap(
             children: [
               Icon(Icons.logout),
-              Text("Logout"),
+              SizedBox(width: 5),
+              Text(
+                "Logout",
+                style: TextStyle(fontSize: 18),
+              ),
             ],
           )),
     );
@@ -116,7 +129,11 @@ actionButtons(context) {
           child: Wrap(
             children: [
               Icon(Icons.login),
-              Text("Login"),
+              SizedBox(width: 5),
+              Text(
+                "Login",
+                style: TextStyle(fontSize: 18),
+              ),
             ],
           )),
     );

@@ -11,11 +11,10 @@ var globalImage = 'https://mrqasimabid.pythonanywhere.com/static/yarn_images/';
 
 MaterialColor? mainColor = Colors.blue;
 List<MaterialColor> appColors = [
-  Colors.red,
-  Colors.blue,
+  Colors.teal,
+  Colors.brown,
+  Colors.blueGrey,
   Colors.green,
-  Colors.cyan,
-  Colors.purple,
 ];
 
 var cols = {

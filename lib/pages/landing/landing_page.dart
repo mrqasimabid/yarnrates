@@ -32,7 +32,7 @@ class _LandingPageState extends State<LandingPage> {
         drawer: const DrawerC(),
         appBar: AppBar(
           centerTitle: true,
-          backgroundColor: Colors.transparent,
+          backgroundColor: mainColor,
           // leadingWidth: ,
           // leading: Image.asset(
           //   'assets/YARNMARKETLOGO.png',

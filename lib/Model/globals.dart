@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -108,15 +110,14 @@ Widget dropdownDialog({
   required List<dynamic> data,
   required void Function(void Function() fn) setState,
 }) {
-  final GlobalKey _Key = GlobalKey<ScaffoldState>();
+  final GlobalKey key = GlobalKey<ScaffoldState>();
 
   List<dynamic> sortedList = data;
   bool searching = true;
-  bool showButton = false;
   String currentText = '';
   bool saving = false;
   return StatefulBuilder(
-    key: _Key,
+    key: key,
     builder: (context, setState) {
       if (searching) {
         sortedList = data;
@@ -149,11 +150,8 @@ Widget dropdownDialog({
               }
             });
           }
-          if (sortedList.length == 0) {
-            print("empty");
-            showButton = true;
+          if (sortedList.isEmpty) {
           } else {
-            showButton = false;
           }
           setState(() {});
         }
@@ -185,29 +183,26 @@ Widget dropdownDialog({
                 sortList(value);
               },
             ),
-            sortedList.length == 0
-                ? Container(
-                    child: Center(
-                        child: Column(
-                      children: [
-                        saving
-                            ? LinearProgressIndicator()
-                            : MaterialButton(
-                                onPressed: () async {
-                                  saving = true;
-                                  setState(() {});
-                                  String query =
-                                      "INSERT INTO $tablename($displayValue) VALUE ('$currentText')";
-                                  var res = await insertDB(query);
-                                  if (res['status'] == "true") {
-                                    Navigator.of(context).pop(currentText);
-                                  }
-                                  print(res);
-                                },
-                                child: Icon(Icons.add)),
-                      ],
-                    )),
-                  )
+            sortedList.isEmpty
+                ? Center(
+                    child: Column(
+                  children: [
+                    saving
+                        ? const LinearProgressIndicator()
+                        : MaterialButton(
+                            onPressed: () async {
+                              saving = true;
+                              setState(() {});
+                              String query =
+                                  "INSERT INTO $tablename($displayValue) VALUE ('$currentText')";
+                              var res = await insertDB(query);
+                              if (res['status'] == "true") {
+                                Navigator.of(context).pop(currentText);
+                              }
+                            },
+                            child: const Icon(Icons.add)),
+                  ],
+                ))
                 : Expanded(
                     child: ListView.builder(
                       shrinkWrap: true,
@@ -304,9 +299,7 @@ dropdownTextField(data, name, context, setState, alter, tablename) {
 isLoggedIn() async {
   var prefs = await SharedPreferences.getInstance();
   var flag = prefs.getBool('login');
-  if (flag == null) {
-    flag = false;
-  }
+  flag ??= false;
   return flag;
 }
 
@@ -327,4 +320,4 @@ loadData() async {
   }
 }
 
-TextStyle whiteText = TextStyle(color: Colors.white);
+TextStyle whiteText = const TextStyle(color: Colors.white);

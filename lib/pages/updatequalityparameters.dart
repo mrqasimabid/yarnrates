@@ -5,9 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:yarnrates/Model/globals.dart';
 import 'package:yarnrates/Model/tablerow.dart';
-import 'package:yarnrates/component/confirmation.dart';
 import 'package:yarnrates/component/datepickers.dart';
-import 'package:yarnrates/component/pricehistorylist.dart';
 import 'package:yarnrates/component/snackbar.dart';
 import 'package:yarnrates/requests.dart';
 
@@ -36,7 +34,6 @@ class _UpdatePriceState extends State<UpdateQualityParameters> {
 
   refresh() {
     previousPrice().then((value) {
-      print(value);
       parameters = jsonDecode(value['parameters']);
     }).whenComplete(() {
       loader = false;
@@ -71,12 +68,9 @@ class _UpdatePriceState extends State<UpdateQualityParameters> {
   final GlobalKey _pageKey = GlobalKey<ScaffoldState>();
 
   update() async {
-    print(selectedDate.toString());
     var query =
         "INSERT INTO `quality_parameters` ( `dated`, `product_id`, `cf`, `cf%`, `strength`, `strenght%`, `single_yarn_strenght`,`single_yarn_strenght%`, `thick`, `thin`, `neps`, `warping`) VALUES ('${selectedDate.toString().split(".")[0]}', ${widget.row!.productID}, ${controllers['cf']!.text}, ${controllers['cf%']!.text}, ${controllers['strength']!.text},  ${controllers['strength%']!.text},${controllers['singleyarnstrength']!.text}, ${controllers['singleyarnstrength%']!.text}, ${controllers['thick']!.text}, ${controllers['thin']!.text}, ${controllers['neps']!.text},${controllers['warpings']!.text});";
-    print(query);
     var res = await insertDB(query);
-    print(res);
     bool flag = res['status'] == "true";
     showSnackbar(key: _pageKey, msg: res['message'], status: flag);
     if (flag) {

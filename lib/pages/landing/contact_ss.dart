@@ -1,7 +1,9 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 
 class ContactUs extends StatefulWidget {
-  ContactUs({Key? key}) : super(key: key);
+  const ContactUs({Key? key}) : super(key: key);
 
   @override
   State<ContactUs> createState() => _ContactUsState();
@@ -87,7 +89,7 @@ class _ContactUsState extends State<ContactUs> {
                 ],
               ),
               Row(
-                children: [],
+                children: const [],
               ),
             ],
           ),

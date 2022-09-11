@@ -1,10 +1,9 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import '../Model/globals.dart';
 import '../Model/tablerow.dart';
-import '../pages/updateprice.dart';
 
 class ProductCard extends StatelessWidget {
   late YarnRow row;

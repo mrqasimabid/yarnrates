@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yarnrates/Model/globals.dart';
-import '../main.dart';
 import '../requests.dart';
-import 'product_page.dart';
 
 const users = {
   'dribbble@gmail.com': '12345',
@@ -14,15 +12,16 @@ const users = {
 };
 
 class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
   Duration get loginTime => const Duration(milliseconds: 2250);
 
   Future<String?> _authUser(LoginData data) async {
-    var res;
+    dynamic res;
     try {
       res = await loginAPI(data.name, data.password);
       if (res['status'] == "true") {
         globalUser = jsonDecode(res['data'])[0];
-        print(globalUser);
         var prefs = await SharedPreferences.getInstance();
         await prefs.setBool('login', true);
         await prefs.setString('user', jsonEncode(globalUser));

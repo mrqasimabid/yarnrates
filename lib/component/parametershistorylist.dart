@@ -34,9 +34,7 @@ parametersHistory(rates) {
                     child: Column(
                       children: [
                         ...parameterCols.entries.map((el) {
-                          print(parameterCols[el.key]);
-                          print(el.value);
-                          // return Container();
+                          
                           return Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

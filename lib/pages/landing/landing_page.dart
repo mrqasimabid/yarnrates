@@ -1,11 +1,13 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:yarnrates/component/drawer.dart';
 
 import '../../Model/globals.dart';
 import 'aboutus.dart';
-import 'contactUs.dart';
-import 'deliverSection.dart';
-import 'mainSection.dart';
+import 'contact_ss.dart';
+import 'deliver_section.dart';
+import 'main_section.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -27,7 +29,7 @@ class _LandingPageState extends State<LandingPage> {
 
     return SafeArea(
       child: Scaffold(
-        drawer: DrawerC(),
+        drawer: const DrawerC(),
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.transparent,
@@ -46,9 +48,9 @@ class _LandingPageState extends State<LandingPage> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const MainSection(),
-              const AboutUs(),
+            children: const [
+              MainSection(),
+              AboutUs(),
               DeliverSection(),
               ContactUs(),
             ],
@@ -110,7 +112,7 @@ actionButtons(context) {
             Navigator.of(context).pushNamed('/logout');
           },
           child: Wrap(
-            children: [
+            children: const [
               Icon(Icons.logout),
               SizedBox(width: 5),
               Text(
@@ -127,7 +129,7 @@ actionButtons(context) {
             Navigator.of(context).pushNamed('/login');
           },
           child: Wrap(
-            children: [
+            children: const [
               Icon(Icons.login),
               SizedBox(width: 5),
               Text(

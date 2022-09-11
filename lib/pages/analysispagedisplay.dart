@@ -50,7 +50,6 @@ class _AnalysisDisplayState extends State<AnalysisDisplay> {
         List rows = rates
             .where((element) => element['product_id'] == e.productID)
             .toList();
-        print(rows);
         Widget w = Padding(
             padding: const EdgeInsets.all(8.0),
             child: ExpansionTile(
@@ -93,7 +92,7 @@ class _AnalysisDisplayState extends State<AnalysisDisplay> {
         widgets.add(w);
       }
     } catch (ex) {
-      print(ex);
+      ex;
     }
     return SingleChildScrollView(child: Column(children: widgets));
   }

@@ -33,7 +33,6 @@ class _UpdatePriceState extends State<UpdatePrice> {
 
   refresh() {
     previousPrice().then((value) {
-      print(value);
       prices = jsonDecode(value['prices']);
     }).whenComplete(() {
       loader = false;
@@ -66,7 +65,6 @@ class _UpdatePriceState extends State<UpdatePrice> {
   final GlobalKey _pageKey = GlobalKey<ScaffoldState>();
 
   update() async {
-    print(selectedDate.toString());
     var query =
         "INSERT INTO `rates` (`product_id`, `dated`, `rate_lbs`) VALUES (${widget.row!.productID}, '${selectedDate.toString().split(".")[0]}', ${updateController.text});";
     var res = await insertDB(query);

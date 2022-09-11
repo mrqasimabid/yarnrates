@@ -1,9 +1,10 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:yarnrates/component/main_list.dart';
 import 'package:yarnrates/component/product_card.dart';
 
 import '../Model/tablerow.dart';
-import '../requests.dart';
 
 class ProductDetails extends StatefulWidget {
   late YarnRow row;
@@ -51,7 +52,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               children: [
                 ProductCard(e: widget.row),
                 ListTile(
-                    title: Text(widget.alike.length > 0
+                    title: Text(widget.alike.isNotEmpty
                         ? "There are total ${widget.alike.length.toString()} alike Product"
                         : "No alike product"))
               ],

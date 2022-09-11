@@ -6,7 +6,7 @@ priceHistory(rates) {
     {'dated': 'Date'},
   ];
   return rates.length == 0
-      ? Center(
+      ? const Center(
           child: Text("No Price History Found"),
         )
       : SingleChildScrollView(
@@ -26,12 +26,12 @@ priceHistory(rates) {
                             return Column(children: [
                               Text(
                                 ee.value.toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 16),
                               ),
                               Text(
                                 e[ee.key].toString(),
-                                style: TextStyle(fontSize: 15),
+                                style: const TextStyle(fontSize: 15),
                               )
                             ]);
                           }).toList(),

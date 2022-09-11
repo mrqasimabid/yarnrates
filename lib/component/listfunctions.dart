@@ -7,7 +7,6 @@ process(List<dynamic> data) {
 }
 
 processSuitable(List<dynamic> data) {
-  print(data);
   var f = [];
   for (var element in data) {
     f.add(element['name'].toString());

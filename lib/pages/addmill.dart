@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, deprecated_member_use
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -8,7 +10,7 @@ import 'package:yarnrates/requests.dart';
 import '../Model/globals.dart';
 
 class AddMillPage extends StatefulWidget {
-  AddMillPage({
+  const AddMillPage({
     Key? key,
   }) : super(key: key);
   @override
@@ -30,7 +32,7 @@ class _AddMillPageState extends State<AddMillPage> {
 
   File? imageFile;
   Image? image;
-  var selectedMill = null;
+  var selectedMill;
   int id = 0;
   @override
   Widget build(BuildContext context) {
@@ -60,7 +62,7 @@ class _AddMillPageState extends State<AddMillPage> {
                   TextFormField(
                     controller: nameController,
                     decoration: const InputDecoration(
-                      icon: const Icon(Icons.person),
+                      icon:  Icon(Icons.person),
                       hintText: 'Enter mill name',
                       labelText: 'Name',
                     ),
@@ -73,15 +75,15 @@ class _AddMillPageState extends State<AddMillPage> {
                   ),
                   ListTile(
                     horizontalTitleGap: size.width / 5,
-                    title: Text("Pick Image"),
+                    title: const Text("Pick Image"),
                     trailing: MaterialButton(
-                      child: Icon(Icons.browse_gallery),
+                      child: const Icon(Icons.browse_gallery),
                       onPressed: () async {
                         await _getFromGallery();
                       },
                     ),
                     leading: MaterialButton(
-                      child: Icon(Icons.camera),
+                      child: const Icon(Icons.camera),
                       onPressed: () async {
                         await _getFromCamera();
                       },
@@ -103,7 +105,7 @@ class _AddMillPageState extends State<AddMillPage> {
                     onPressed: () async {
                       if (nameController.text.isNotEmpty) {
                         String name = nameController.text;
-                        var filename = null;
+                        var filename;
                         if (imageFile != null) {
                           filename = imageFile!.path
                               .split('/')
@@ -111,7 +113,6 @@ class _AddMillPageState extends State<AddMillPage> {
                                   element.contains('.jpg') ||
                                   element.contains('.png'))
                               .first;
-                          print(filename);
                         }
                         if (selectedMill == null) {
                           String query =
@@ -124,12 +125,9 @@ class _AddMillPageState extends State<AddMillPage> {
                             await asyncFileUpload(imageFile!, query);
                           }
                         } else {
-                          if (filename == null) {
-                            filename = selectedMill['mill_image'];
-                          }
+                          filename ??= selectedMill['mill_image'];
                           String query =
                               "UPDATE mills set mill_name='$name',mill_image='$filename' where mill_id=${globalUser['uid']}";
-                          print(query);
                           if (imageFile == null) {
                             await insertDB(query);
                           } else {
@@ -139,13 +137,13 @@ class _AddMillPageState extends State<AddMillPage> {
                         reloadMills();
                       }
                     },
-                    child: Text("Submit"),
+                    child: const Text("Submit"),
                   )
                 ],
               ),
             ),
             loader
-                ? Center(
+                ? const Center(
                     child: CircularProgressIndicator(),
                   )
                 : SingleChildScrollView(
@@ -182,7 +180,6 @@ class _AddMillPageState extends State<AddMillPage> {
                                       }
                                       return !flags.contains(false);
                                     }).toList();
-                                    print(table);
                                   }
                                   setState(() {});
                                 },
@@ -208,7 +205,7 @@ class _AddMillPageState extends State<AddMillPage> {
 
                                                     setState(() {});
                                                   },
-                                                  child: Icon(Icons.edit)),
+                                                  child: const Icon(Icons.edit)),
                                               tileColor: mainColor,
                                               title: Text(e['mill_name']),
                                             )
@@ -221,7 +218,7 @@ class _AddMillPageState extends State<AddMillPage> {
 
                                                     setState(() {});
                                                   },
-                                                  child: Icon(Icons.edit)),
+                                                  child: const Icon(Icons.edit)),
                                               collapsedBackgroundColor:
                                                   mainColor,
                                               title: Text(e['mill_name']),

@@ -126,9 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
   listViewMode(size) {
     isLoggedIn().then((v) {
       // print(v);
-      if (v == null) {
-        v = false;
-      }
+      v ??= false;
       admin = v;
       flag = false;
       setState(() {});

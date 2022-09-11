@@ -38,7 +38,6 @@ class _AnalysisPageState extends State<AnalysisPage> {
       table = value['table'];
     }).whenComplete(() {
       loader = false;
-      print(filter);
       setState(() {});
     });
 
@@ -114,7 +113,6 @@ class _AnalysisPageState extends State<AnalysisPage> {
       });
       var query = "SELECT * FROM rates where product_id in $ids ";
       query = query.replaceAll('[', '(').replaceAll(']', ')');
-      print(query);
       List<dynamic> rates = jsonDecode(await queryDB(query));
 
       if (dateController.text.isNotEmpty) {
@@ -137,7 +135,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
               builder: (BuildContext context) =>
                   AnalysisDisplay(rates, table3)));
         } catch (ex) {
-          print(ex);
+          ex;
         }
       } else {
         showSnackbar(
@@ -289,7 +287,6 @@ class _AnalysisPageState extends State<AnalysisPage> {
                       readOnly: true,
                       onTap: () async {
                         dynamic d = await selectDateRange(context: context);
-                        print(d);
                         d = processDate(d);
                         if (d != null) dateController.text = d.toString();
                         setState(

@@ -1,7 +1,11 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 // Create a Form widget.
 class AddMillForm extends StatefulWidget {
+  const AddMillForm({Key? key}) : super(key: key);
+
   @override
   AddMillFormState createState() {
     return AddMillFormState();
@@ -29,7 +33,7 @@ class AddMillFormState extends State<AddMillForm> {
           ),
           TextFormField(
             decoration: const InputDecoration(
-              icon: const Icon(Icons.person),
+              icon: Icon(Icons.person),
               hintText: 'Enter your full name',
               labelText: 'Name',
             ),
@@ -42,7 +46,7 @@ class AddMillFormState extends State<AddMillForm> {
           ),
           TextFormField(
             decoration: const InputDecoration(
-              icon: const Icon(Icons.phone),
+              icon: Icon(Icons.phone),
               hintText: 'Enter a phone number',
               labelText: 'Phone',
             ),
@@ -55,7 +59,7 @@ class AddMillFormState extends State<AddMillForm> {
           ),
           TextFormField(
             decoration: const InputDecoration(
-              icon: const Icon(Icons.calendar_today),
+              icon: Icon(Icons.calendar_today),
               hintText: 'Enter your date of birth',
               labelText: 'Dob',
             ),
@@ -66,16 +70,16 @@ class AddMillFormState extends State<AddMillForm> {
               return null;
             },
           ),
-          new Container(
+          Container(
               padding: const EdgeInsets.only(left: 150.0, top: 40.0),
-              child: new RaisedButton(
+              child: TextButton(
                 child: const Text('Submit'),
                 onPressed: () {
                   // It returns true if the form is valid, otherwise returns false
                   if (_formKey.currentState!.validate()) {
                     // If the form is valid, display a Snackbar.
                     Scaffold.of(context).showSnackBar(
-                        SnackBar(content: Text('Data is in processing.')));
+                        const SnackBar(content:  Text('Data is in processing.')));
                   }
                 },
               )),

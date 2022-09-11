@@ -29,7 +29,6 @@ class _PriceHistoryState extends State<PriceHistory> {
     // q = "SELECT * from rates where product_id=5 order by dated desc";
     queryDB(q).then((value) {
       rates = jsonDecode(value);
-      print(rates);
       if (rates.isEmpty) {
         noData = true;
       }

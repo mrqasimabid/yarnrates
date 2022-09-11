@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 import '../Model/globals.dart';
@@ -41,13 +43,11 @@ class _MainPageListState extends State<MainPageList> {
     // print(controller!.position.extentAfter);
 
     if (controller!.position.atEdge) {
-      print("edge");
       // if (controller!.position.extentAfter < 500) {
       setState(() {
         if (!((items.length + 30) > widget.table.length)) {
           items.addAll(List.generate(30, (index) => widget.table[index]));
         }
-        print("adding");
       });
     }
   }
@@ -58,7 +58,7 @@ class _MainPageListState extends State<MainPageList> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height / 1.1,
               child: ListView.builder(
                   scrollDirection: Axis.vertical,
@@ -96,7 +96,7 @@ class _MainPageListState extends State<MainPageList> {
                                               .toString()) +
                                           '.jpg'),
                                       fit: BoxFit.cover,
-                                      colorFilter: ColorFilter.mode(
+                                      colorFilter: const ColorFilter.mode(
                                         Colors.black38,
                                         BlendMode.dstATop,
                                       ),
@@ -114,7 +114,7 @@ class _MainPageListState extends State<MainPageList> {
                                                   children: [
                                                     Text(
                                                       cols['all']![el.key]!,
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         fontSize: 15,
@@ -149,7 +149,7 @@ class _MainPageListState extends State<MainPageList> {
                                                           arguments: m);
                                                 },
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 width: 20,
                                               ),
                                               MaterialButton(
@@ -204,7 +204,7 @@ class _MainPageListState extends State<MainPageList> {
                                                           }
                                                         },
                                                       ),
-                                                      SizedBox(
+                                                      const SizedBox(
                                                         width: 20,
                                                       ),
                                                       MaterialButton(
@@ -244,7 +244,6 @@ class _MainPageListState extends State<MainPageList> {
                                                 child: Text("Details",
                                                     style: whiteText),
                                                 onPressed: () async {
-                                                  print(e);
                                                   List<YarnRow> recommendations = widget
                                                       .table
                                                       .where((element) =>
@@ -257,10 +256,9 @@ class _MainPageListState extends State<MainPageList> {
                                                           element.productID !=
                                                               e.productID)
                                                       .toList();
-                                                  var status =
-                                                      await Navigator.of(
-                                                              context)
-                                                          .push(
+
+                                                  await Navigator.of(context)
+                                                      .push(
                                                     MaterialPageRoute<String>(
                                                       builder: (BuildContext
                                                               context) =>

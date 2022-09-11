@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:yarnrates/main.dart';
 import 'package:yarnrates/pages/addnew.dart';
 import 'package:yarnrates/pages/analysispage.dart';
 import 'package:yarnrates/pages/landing/landing_page.dart';
@@ -24,7 +23,7 @@ class RouteGenerator {
         }
       case '/login':
         {
-          return MaterialPageRoute(builder: (_) => LoginScreen());
+          return MaterialPageRoute(builder: (_) => const LoginScreen());
         }
       case '/parameterhistory':
         {
@@ -52,15 +51,15 @@ class RouteGenerator {
           logout();
           // return MaterialPageRoute(
           //     builder: (_) => const MyHomePage(title: 'Yarn Rates'));
-          return MaterialPageRoute(builder: (_) => LandingPage());
+          return MaterialPageRoute(builder: (_) => const LandingPage());
         }
       case '/addmill':
         {
-          return MaterialPageRoute(builder: (_) => AddMillPage());
+          return MaterialPageRoute(builder: (_) => const AddMillPage());
         }
       case '/landing':
         {
-          return MaterialPageRoute(builder: (_) => LandingPage());
+          return MaterialPageRoute(builder: (_) => const LandingPage());
         }
 
       default:

@@ -27,7 +27,6 @@ class _ParameterHistoryState extends State<ParameterHistory> {
     // q = "SELECT * from rates where product_id=5 order by dated desc";
     queryDB(q).then((value) {
       rates = jsonDecode(value);
-      print(rates);
       if (rates.isEmpty) {
         noData = true;
       }
@@ -68,6 +67,7 @@ class _ParameterHistoryState extends State<ParameterHistory> {
 
   analysis(List<dynamic> rates) {
     return Container();
+    // ignore: dead_code
     double avg =
         rates.map((m) => m['rate_lbs']).reduce((a, b) => a + b) / rates.length;
     var maximumNumber = rates
@@ -117,6 +117,7 @@ class _ParameterHistoryState extends State<ParameterHistory> {
 
   chart() {
     return Container();
+    // ignore: dead_code
     return Row(
       children: [
         Expanded(

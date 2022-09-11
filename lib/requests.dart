@@ -26,7 +26,6 @@ asyncFileUpload(File file, String q) async {
   //Get the response from the server
   var responseData = await response.stream.toBytes();
   var responseString = String.fromCharCodes(responseData);
-  print(responseString);
   return (responseString);
 }
 
@@ -47,7 +46,6 @@ Future insertDB(q) async {
         'uid': globalUser['uid'].toString()
       });
   var data = jsonDecode(res.body);
-  print(data);
   return data;
 }
 

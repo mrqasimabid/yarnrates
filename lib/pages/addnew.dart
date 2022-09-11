@@ -151,7 +151,7 @@ class _AddNewState extends State<AddNew> {
           MaterialButton(
             onPressed: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (BuildContext context) => AddNew(),
+                builder: (BuildContext context) => const AddNew(),
               ));
             },
             child: const Icon(Icons.refresh),

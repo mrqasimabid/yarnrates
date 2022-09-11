@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 
 class MainSection extends StatefulWidget {
@@ -84,7 +86,7 @@ class _MainSectionState extends State<MainSection> {
     return Padding(
       padding: const EdgeInsets.only(left: 30),
       child: ListTile(
-        leading: Icon(
+        leading: const Icon(
           Icons.verified,
           // size: width % 50,
           size: 30,

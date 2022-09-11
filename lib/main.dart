@@ -1,11 +1,8 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:yarnrates/Model/tablerow.dart';
-import 'package:yarnrates/component/drawer.dart';
 import 'package:yarnrates/pages/landing/landing_page.dart';
 import 'Model/globals.dart';
 import 'route_generator.dart';
@@ -77,7 +74,9 @@ class _SplashScreenState extends State<SplashScreen> {
                 parent: animation, curve: Curves.fastLinearToSlowEaseIn);
             return SlideTransition(
               // scale: animation,
-              position: Tween(begin: const Offset(1.0, 0.0), end: const Offset(0.0, 0.0))
+              position: Tween(
+                      begin: const Offset(1.0, 0.0),
+                      end: const Offset(0.0, 0.0))
                   .animate(animation),
               child: child,
             );
@@ -103,7 +102,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       ),
       child: Center(
-        child: Image.asset('assets/yarnmarketlogo.png'),
+        child: Image.asset('assets/YARNMARKETLOGO.png'),
       ),
     );
   }

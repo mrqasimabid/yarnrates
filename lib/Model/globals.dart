@@ -13,10 +13,9 @@ var globalImage = 'https://mrqasimabid.pythonanywhere.com/static/yarn_images/';
 
 MaterialColor? mainColor = Colors.blue;
 List<MaterialColor> appColors = [
-  Colors.teal,
-  Colors.brown,
+  // Colors.teal,
+  // Colors.brown,
   Colors.blueGrey,
-  Colors.green,
 ];
 
 var cols = {
@@ -150,8 +149,7 @@ Widget dropdownDialog({
             });
           }
           if (sortedList.isEmpty) {
-          } else {
-          }
+          } else {}
           setState(() {});
         }
       }
@@ -185,23 +183,23 @@ Widget dropdownDialog({
             sortedList.isEmpty
                 ? Center(
                     child: Column(
-                  children: [
-                    saving
-                        ? const LinearProgressIndicator()
-                        : MaterialButton(
-                            onPressed: () async {
-                              saving = true;
-                              setState(() {});
-                              String query =
-                                  "INSERT INTO $tablename($displayValue) VALUE ('$currentText')";
-                              var res = await insertDB(query);
-                              if (res['status'] == "true") {
-                                Navigator.of(context).pop(currentText);
-                              }
-                            },
-                            child: const Icon(Icons.add)),
-                  ],
-                ))
+                    children: [
+                      saving
+                          ? const LinearProgressIndicator()
+                          : MaterialButton(
+                              onPressed: () async {
+                                saving = true;
+                                setState(() {});
+                                String query =
+                                    "INSERT INTO $tablename($displayValue) VALUE ('$currentText')";
+                                var res = await insertDB(query);
+                                if (res['status'] == "true") {
+                                  Navigator.of(context).pop(currentText);
+                                }
+                              },
+                              child: const Icon(Icons.add)),
+                    ],
+                  ))
                 : Expanded(
                     child: ListView.builder(
                       shrinkWrap: true,

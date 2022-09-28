@@ -16,6 +16,7 @@ List<MaterialColor> appColors = [
   // Colors.teal,
   // Colors.brown,
   Colors.blueGrey,
+  // Colors.yellow
 ];
 
 var cols = {

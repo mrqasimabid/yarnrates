@@ -51,7 +51,11 @@ class _UpdatePriceState extends State<UpdatePrice> {
     if (updateController.text.isEmpty) {
       allowSave = false;
     } else {
-      allowSave = true;
+      if (int.parse(updateController.text) > 0) {
+        allowSave = true;
+      } else {
+        allowSave = false;
+      }
     }
     setState(() {});
   }

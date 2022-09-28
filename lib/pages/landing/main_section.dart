@@ -43,7 +43,7 @@ class _MainSectionState extends State<MainSection> {
               children: [
                 Image.asset(
                   'assets/YARNMARKETLOGO.png',
-                  scale: 9,
+                  scale: 3,
                 ),
               ],
             ),

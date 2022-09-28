@@ -30,7 +30,12 @@ class _MainPageListState extends State<MainPageList> {
   void initState() {
     super.initState();
     controller = ScrollController()..addListener(_scrollListener);
-    items = List.generate(30, (index) => widget.table[index]);
+    if (widget.table.length < 30) {
+      items =
+          List.generate(widget.table.length, (index) => widget.table[index]);
+    } else {
+      items = List.generate(30, (index) => widget.table[index]);
+    }
   }
 
   @override
